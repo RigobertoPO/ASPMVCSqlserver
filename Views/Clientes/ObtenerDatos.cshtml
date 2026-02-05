@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "ObtenerDatos";
+}
+
+<h2>ObtenerDatos</h2>
+<a class="btn btn-warning btn-sm"
+   href="@Url.Action("Create", "Clientes")">
+    Editar
+</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th style="width:150px">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.CorreoElectronico</td>
+                <th style="width:150px">Acciones</th>
+                <td class="text-center">
+
+                    <!-- EDITAR -->
+                    <a class="btn btn-warning btn-sm"
+                       href="@Url.Action("Edit", "Clientes", new { id = item.IdCliente })">
+                        Editar
+                    </a>
+
+                    <!-- ELIMINAR -->
+                    <a class="btn btn-danger btn-sm"
+                       href="@Url.Action("Delete", "Clientes", new { id = item.IdCliente })"
+                       onclick="return confirm('¿Seguro que deseas eliminar este registro?');">
+                        Eliminar
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
