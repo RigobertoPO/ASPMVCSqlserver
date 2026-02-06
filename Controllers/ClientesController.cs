@@ -95,7 +95,7 @@ namespace MVCSqlserver.Controllers
                          select cl).FirstOrDefault();
                 if (c != null)
                 {
-                    c = cliente;
+                    c.Nombre = cliente.Nombre;
                     _context.SaveChanges();
                 }
                 return RedirectToAction(nameof(ObtenerDatos));
